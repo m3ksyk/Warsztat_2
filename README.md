@@ -5,4 +5,5 @@ Program allows creating, editing and removing users, groups, exercises and solut
 and given exercises to which the user then adds solutions.
 Users groups, exercises and tasks are managed using Manager.
 User can submit solutions to assigned tasks using user program.
+
  
