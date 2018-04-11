@@ -35,7 +35,7 @@ public class Manager {
 				System.out.println("Choose one of the options:");
 				inputStr = scan.nextLine();
 			}
-			//catch null pointer!!
+			
 			
 		}
 		scan.close();

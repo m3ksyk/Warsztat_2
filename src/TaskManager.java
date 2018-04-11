@@ -42,10 +42,18 @@ public class TaskManager {
 		public static void addTask(Connection conn, Scanner scan) throws SQLException {
 			User.viewAllUsers(conn);
 			System.out.println("Assigning a task to a user. Step 1: Enter user id:");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id = scan.nextInt();
 			
 			Exercise.viewAllExercises(conn);
 			System.out.println("Assigning a task to a user. Step 2: Enter excercice id:");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id2 = scan.nextInt();			
 			Solution solution = new Solution();
 			LocalDateTime local = LocalDateTime.now();
@@ -60,6 +68,10 @@ public class TaskManager {
 		public static void viewUserTasks(Connection conn, Scanner scan) throws SQLException {
 			User.viewAllUsers(conn);
 			System.out.println("Choose user whose tasks you wish to view:");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id = scan.nextInt();
 
 			String sql = "SELECT * FROM solution where users_id=?";

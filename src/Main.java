@@ -4,17 +4,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-
-
-
 public class Main {
 	
 	public static void main(String[] args) {
 		
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/workshop_2?useSSL=false",
 	            "root", "coderslab")) {
-			
-			//IN THE CURRENT VERSION BOTH USER AND MANAGER PROGRAM ARE CALLED FROM THIS MENU IN MAIN METHOD
+		
+			//IN THE CURRENT VERSION BOTH USER AND MANAGER PROGRAM ARE CALLED FROM A SHARED MENU IN MAIN METHOD
 			Scanner scan =new Scanner(System.in);
 			System.out.println("Press 1 to enter user view");
 			System.out.println("Press 2 to enter Manager view");
@@ -33,19 +30,17 @@ public class Main {
 					System.out.println("Choose one of the options:");
 					inputStr = scan.nextLine();
 				}
-				
-				
 			}
-			scan.close();
-			
-			
-			
+			scan.close();	
+					
 		} catch (SQLException e) {
-			e.printStackTrace();
-		
+			e.printStackTrace();		
+		}catch (NullPointerException e) {
+			e.printStackTrace();		
+		}catch (Exception e) {
+			e.printStackTrace();		
 		}
-	}
-	
+	}	
 }
 //creating table users
 //create table users (id int auto_increment primary key, username varchar(255), email  

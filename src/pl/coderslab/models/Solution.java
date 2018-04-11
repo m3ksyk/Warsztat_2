@@ -193,6 +193,12 @@ public class Solution {
 	    sArray = solutions.toArray(sArray);
 	    return sArray;
 	}
+
+	@Override
+	public String toString() {
+		return "Solution [id=" + id + ", created=" + created + ", updated=" + updated + ", description=" + description
+				+ ", exercise_id=" + exercise_id + ", users_id=" + users_id + "]";
+	}
 	
 }
 

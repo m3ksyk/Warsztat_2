@@ -3,12 +3,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserProgram {
 	public static void userManagementView(Connection conn) throws SQLException {
 	Scanner scan = new Scanner(System.in);
 	System.out.println("enter your user id:");
+	while (!scan.hasNextInt()) {
+		System.out.println("Input not a number. Please type a number:");
+        scan.next();
+    }
 	int id = scan.nextInt();
 	
 	System.out.println("Choose one of the options:");
@@ -43,19 +48,24 @@ public class UserProgram {
 		preparedStatement = conn.prepareStatement(sql);
 		preparedStatement.setInt(1, id);
 		ResultSet resultSet = preparedStatement.executeQuery();
+		ArrayList<Integer> list = new ArrayList<>();
 		if (resultSet.next()) {			    	
 			int id2 = resultSet.getInt("id");
+			list.add(id2);
 		    String title = resultSet.getString("title");
 		    String description = resultSet.getString("description");
 		    System.out.println(id2 + " " + title + " " + description);
 		}
-		
-//		W przypadku próby dodania rozwiązania do
-//		zadania, które już istnieje program ma wyświetlić
-//		komunikat.
-//		68
+
 		System.out.println("Choose the task you wish to add solution to:");
 		int exId = scan.nextInt();
+		while (!scan.hasNextInt()) {
+			System.out.println("Input not a number. Please type a number:");
+            scan.next();
+        }
+		if(!list.contains(exId)) {
+			System.out.println("A solution to this task already exists or there is no such task assigned to you");
+		}
 		System.out.println("Write your solution: ");
 		String description = scan.nextLine();		
 		LocalDateTime local = LocalDateTime.now();

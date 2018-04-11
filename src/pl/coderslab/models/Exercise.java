@@ -117,5 +117,11 @@ public class Exercise {
 	        System.out.println(exercise.toString());
 	    }
     }
+
+	@Override
+	public String toString() {
+		return "Exercise [id=" + id + ", title=" + title + ", description=" + description + "]";
+	}
+	
 	
 }

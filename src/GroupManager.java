@@ -59,6 +59,10 @@ public class GroupManager {
 			String name = scan.nextLine();
 			group.setName(name);
 			System.out.println("Enter group id: ");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id = scan.nextInt();
 			group.setId(id);
 			group.saveToDB(conn);
@@ -68,6 +72,10 @@ public class GroupManager {
 		
 		public static void deleteGroup(Connection conn, Scanner scan) throws SQLException {
 			System.out.println("Deleting group. Enter group id:");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id = scan.nextInt();
 			Group.loadGroupById(conn, id).delete(conn);
 			System.out.println("Group with id: " + id + " deleted");

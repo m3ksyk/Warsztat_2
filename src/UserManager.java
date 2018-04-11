@@ -1,8 +1,6 @@
 
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -56,6 +54,10 @@ public class UserManager {
 		String password = scan.nextLine();
 		user.setPassword(password);
 		System.out.println("Enter user group id: ");
+		while (!scan.hasNextInt()) {
+			System.out.println("Input not a number. Please type a number:");
+            scan.next();
+        }
 		int groupId = scan.nextInt();
 		user.setUser_group_id(groupId);
 		user.saveToDB(conn);		
@@ -76,9 +78,17 @@ public class UserManager {
 		String password = scan.nextLine();
 		user.setPassword(password);
 		System.out.println("Enter user group id: ");
+		while (!scan.hasNextInt()) {
+			System.out.println("Input not a number. Please type a number:");
+            scan.next();
+        }
 		int groupId = scan.nextInt();
 		user.setUser_group_id(groupId);
 		System.out.println("Enter user id: ");
+		while (!scan.hasNextInt()) {
+			System.out.println("Input not a number. Please type a number:");
+            scan.next();
+        }
 		int id = scan.nextInt();
 		user.setId(id);
 		user.saveToDB(conn);
@@ -87,6 +97,10 @@ public class UserManager {
 	}
 	public static void deleteUser(Connection conn, Scanner scan) throws SQLException {
 		System.out.println("Deleting user. Enter user id:");
+		while (!scan.hasNextInt()) {
+			System.out.println("Input not a number. Please type a number:");
+            scan.next();
+        }
 		int id = scan.nextInt();
 		User.loadUserById(conn, id).delete(conn);
 		System.out.println("User with id: " + id + " deleted");

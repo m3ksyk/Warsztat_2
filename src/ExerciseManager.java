@@ -64,6 +64,10 @@ public class ExerciseManager {
 			String description = scan.nextLine();
 			exercise.setDescription(description);
 			System.out.println("Enter exercise id: ");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id = scan.nextInt();
 			exercise.setId(id);
 			exercise.saveToDB(conn);
@@ -72,6 +76,10 @@ public class ExerciseManager {
 		}
 		public static void deleteExercise(Connection conn, Scanner scan) throws SQLException {
 			System.out.println("Deleting exercise. Enter exercise id:");
+			while (!scan.hasNextInt()) {
+				System.out.println("Input not a number. Please type a number:");
+	            scan.next();
+	        }
 			int id = scan.nextInt();
 			Exercise.loadExerciseById(conn, id).delete(conn);
 			System.out.println("Exercise with id: " + id + " deleted");

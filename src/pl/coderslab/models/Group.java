@@ -103,4 +103,10 @@ public class Group {
             System.out.println( group.toString() );
         }
 	}
+
+	@Override
+	public String toString() {
+		return "Group [id=" + id + ", name=" + name + "]";
+	}
+	
 }
